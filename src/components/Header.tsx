@@ -21,7 +21,7 @@ const Header: FunctionComponent<{
     <div className="header-inner">
       <ul className="usercontrols header-usercontrols">
         <li className="usercontrols-item usercontrols-source">
-          <a href="https://github.com/clubadm/clubadm" title="Исходный код"></a>
+          <a href="https://github.com/habrasanta" title="Исходный код"></a>
         </li>
         <li className="usercontrols-item usercontrols-help">
           <a href="https://ru.wikipedia.org/wiki/Тайный_Санта" title="Помощь"></a>
