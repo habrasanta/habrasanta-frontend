@@ -1,0 +1,25 @@
+.logo {
+  background: url(../images/logo.png);
+  font-weight: bold;
+  height: 71px;
+  padding-top: 105px;
+  text-align: center;
+  width: 205px;
+  position: relative;
+}
+
+.logo h1 {
+  color: #b40000;
+  font-size: 20px;
+}
+
+.logo h2 {
+  color: #7ea1b5;
+  font-size: 14px;
+}
+
+.logo .bug {
+  position: absolute;
+  left: 23px;
+  top: 41px;
+}

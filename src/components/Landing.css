@@ -1,0 +1,117 @@
+body {
+  background: #382751;
+}
+
+a {
+  transition: color 0.3s ease-out;
+}
+
+.members {
+  background: #911316;
+  color: #fff;
+  padding: 5px;
+  text-align: center;
+  width: 130px;
+}
+
+.feature:before {
+  background-image: url(../images/features.png);
+  content: '';
+  position: absolute;
+}
+
+.feature-description:before {
+  height: 100px;
+  margin-left: -134px;
+  margin-top: 16px;
+  width: 88px;
+}
+
+.feature-anonymity:before {
+  background-position: -88px 0px;
+  height: 118px;
+  margin-left: -142px;
+  margin-top: 6px;
+  width: 105px;
+}
+
+.feature-gift:before {
+  background-position: -193px 0px;
+  height: 101px;
+  margin-top: -5px;
+  margin-left: -128px;
+  width: 77px;
+}
+
+.promo {
+  margin: 50px auto 100px;
+  width: 620px;
+}
+
+.promo-welcome {
+  color: #fff;
+  font-size: 27px;
+  text-align: center;
+}
+
+.promo-list {
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.promo-feature {
+  color: #fff;
+  margin-bottom: 50px;
+  padding-left: 160px;
+}
+
+.promo-feature h5 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.promo-button {
+  box-shadow: 0 0 0 10px #48306a, 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
+  display: block;
+  font-size: 16px;
+  margin: 10px auto;
+  width: 280px;
+}
+
+.banner {
+  padding: 0 10px;
+  margin: 0 auto;
+  width: 940px;
+}
+
+.banner-inner {
+  border-bottom: 1px solid #4c3b65;
+  padding-bottom: 50px;
+}
+
+.banner-members {
+  float: right;
+  margin-top: -30px;
+}
+
+.banner-logo {
+  background: transparent url(../images/circle.png);
+  height: 175px;
+  margin: 30px auto;
+  padding: 42px 27px;
+  width: 205px;
+}
+
+.banner-welcome {
+  color: #fff;
+  font-size: 29px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.banner-button {
+  display: block !important;
+  font-size: 16px;
+  margin: 0 auto;
+  width: 280px;
+}

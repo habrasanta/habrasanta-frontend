@@ -1,0 +1,16 @@
+@import url("reset.css");
+@import url("fonts.css");
+
+:root {
+  --font-family: "PT Sans", Arial, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font: 14px/1.4 var(--font-family);
+}

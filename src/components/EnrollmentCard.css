@@ -1,0 +1,21 @@
+#fullname {
+  margin-bottom: 15px;
+}
+
+#postcode {
+  width: 150px;
+}
+
+#address {
+  height: 65px;
+}
+
+#country {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  width: 100%;
+  padding: 7px;
+  font: 16px/1.4 'PT Sans', Arial, sans-serif;
+  margin: 5px 0 15px 0;
+}

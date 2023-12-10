@@ -1,0 +1,17 @@
+.counters {
+  height: 67px;
+  margin-right: 160px;
+}
+
+.counters li {
+  float: left;
+  font-size: 17px;
+  margin-right: 40px;
+  text-align: center;
+}
+
+.counters b {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+}

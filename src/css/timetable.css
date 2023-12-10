@@ -1,0 +1,16 @@
+.timetable {
+  background: rgba(69, 48, 98, 0.8);
+  border-radius: 5px;
+  height: 65px;
+}
+
+.timetable li {
+  float: left;
+  margin-right: 80px;
+  padding: 13px 15px;
+}
+
+.timetable b {
+  display: block;
+  font-weight: bold;
+}
