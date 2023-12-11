@@ -1,18 +1,27 @@
 import { h, FunctionComponent } from "preact";
-import { Route, Router } from "preact-router";
+import { Route, Router, route } from "preact-router";
 
 import { UserProvider, useUser } from './contexts/UserContext';
-import Home from "./pages/Home";
 import Landing from "./pages/Landing";
 import Profile from "./pages/Profile";
+import { CurrentSeasonProvider, useCurrentSeason } from "./contexts/CurrentSeason";
 
 const Routes: FunctionComponent = () => {
   const user = useUser();
+  const currentSeason = useCurrentSeason();
 
-  if (!user) return <p style={{color:"white"}}>Loading backend info...</p>;
+  if (!user || !currentSeason) return <p style={{color:"white"}}>Loading backend info...</p>;
 
-  return <Router>
-    <Route path="/" component={Home} />
+  const handleRoute = () => {
+    // goes async because router needs to initialize routes on initial render
+    if (user.is_authenticated) {
+      setTimeout(() => route(`/${currentSeason.id}/profile`, true), 0);
+    } else {
+      setTimeout(() => route(`/${currentSeason.id}/`, true), 0);
+    }
+  };
+
+  return <Router onChange={handleRoute}>
     <Route path="/:year" component={Landing} />
     <Route path="/:year/profile" component={Profile} />
   </Router>;
@@ -20,7 +29,9 @@ const Routes: FunctionComponent = () => {
 
 const App: FunctionComponent = () => {
   return <UserProvider>
-    <Routes />
+    <CurrentSeasonProvider>
+      <Routes />
+    </CurrentSeasonProvider>
   </UserProvider>;
 };
 
