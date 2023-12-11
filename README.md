@@ -16,3 +16,7 @@ By default, the beta backend (https://beta.habrasanta.org) is used.
 ```bash
 $ NODE_ENV=production npm run build
 ```
+
+## Deploying to beta.habrasanta.org
+
+Simply push to `main`, GitHub will do the rest.
