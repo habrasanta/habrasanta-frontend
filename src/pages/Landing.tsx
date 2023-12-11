@@ -2,18 +2,19 @@ import { h, FunctionComponent, Fragment } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { route } from "preact-router";
 
-import { BackendInfo, Season } from "../models";
+import { User, Season } from "../models";
 
-import Logo from "./Logo";
-import Footer from "./Footer";
-import Button from "./Button";
+import Logo from "../components/Logo";
+import Footer from "../components/Footer";
+import Button from "../components/Button";
 
 import "./Landing.css";
+import { useUser } from "../contexts/UserContext";
 
 const Landing: FunctionComponent<{
-  info: BackendInfo;
   year: string;
 }> = props => {
+  const user = useUser();
   const [season, setSeason] = useState<Season | undefined>();
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const Landing: FunctionComponent<{
       .catch(res => res.json().then(err => alert(err.detail)));
   }, []);
 
-  if (props.info.is_authenticated) {
+  if (user.is_authenticated) {
     route("/" + props.year + "/profile", true);
     return null;
   }
@@ -43,7 +44,7 @@ const Landing: FunctionComponent<{
             участников<br/>{ season.member_count }
           </div>
           <div className="banner-logo">
-          <Logo year={season.id} debug={props.info.is_debug} />
+          <Logo year={season.id} debug={user.is_debug} />
           </div>
           <h3 className="banner-welcome">
             Рады видеть тебя в нашем клубе<br/>Анонимных Дедов Морозов

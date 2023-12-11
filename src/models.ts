@@ -1,4 +1,4 @@
-export interface BackendInfo {
+export interface User {
   csrf_token: string;
   is_authenticated: boolean;
   is_active: boolean;
