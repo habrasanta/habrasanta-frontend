@@ -3,21 +3,23 @@ import { route } from "preact-router";
 import { useEffect, useState } from "preact/hooks";
 import clsx from "clsx";
 
-import { AddressForm, AddressFormError, BackendInfo, Country, Participation, Season, Mail } from "../models";
+import { AddressForm, AddressFormError, User, Country, Participation, Season, Mail } from "../models";
 
-import Footer from "./Footer";
-import Chat from "./Chat";
-import BannedCard from "./BannedCard";
-import GiftReceivedCard from "./GiftReceivedCard";
-import GiftSentCard from "./GiftSentCard";
-import ShipmentCard from "./ShipmentCard";
-import CountdownCard from "./CountdownCard";
-import EnrollmentCard from "./EnrollmentCard";
-import HappyNewYearCard from "./HappyNewYearCard";
-import NothingSentCard from "./NothingSentCard";
-import WaitingCard from "./WaitingCard";
-import Header from "./Header";
-import CardHeader from "./CardHeader";
+import Footer from "../components/Footer";
+import Chat from "../components/Chat";
+import BannedCard from "../components/BannedCard";
+import GiftReceivedCard from "../components/GiftReceivedCard";
+import GiftSentCard from "../components/GiftSentCard";
+import ShipmentCard from "../components/ShipmentCard";
+import CountdownCard from "../components/CountdownCard";
+import EnrollmentCard from "../components/EnrollmentCard";
+import HappyNewYearCard from "../components/HappyNewYearCard";
+import NothingSentCard from "../components/NothingSentCard";
+import WaitingCard from "../components/WaitingCard";
+import Header from "../components/Header";
+import CardHeader from "../components/CardHeader";
+
+import { useUser } from "../contexts/UserContext";
 
 import "../css/alert.css";
 import "../css/counters.css";
@@ -30,8 +32,9 @@ import "./Profile.css";
 
 const Profile: FunctionComponent<{
   year: string;
-  info: BackendInfo;
 }> = props => {
+  const user = useUser();
+
   const [leftCardFlipped, setLeftCardFlipped] = useState(false);
   const [rightCardFlipped, setRightCardFlipped] = useState(false);
   const [addressFormError, setAddressFormError] = useState<AddressFormError>({ });
@@ -65,7 +68,7 @@ const Profile: FunctionComponent<{
       .catch(() => {}); // ignore
   }, [props.year]);
 
-  if (!props.info.is_authenticated) {
+  if (!user.is_authenticated) {
     route("/" + props.year + "/", true);
     return null;
   }
@@ -81,7 +84,7 @@ const Profile: FunctionComponent<{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": props.info.csrf_token,
+        "X-CSRFToken": user.csrf_token,
       },
       body: JSON.stringify(form),
     }).then(res => res.ok ? res.json() : Promise.reject(res)).then(data => {
@@ -98,7 +101,7 @@ const Profile: FunctionComponent<{
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": props.info.csrf_token,
+        "X-CSRFToken": user.csrf_token,
       },
     }).then(res => res.ok ? res.json() : Promise.reject(res)).then(data => {
       setSeason(data.season);
@@ -113,7 +116,7 @@ const Profile: FunctionComponent<{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": props.info.csrf_token,
+        "X-CSRFToken": user.csrf_token,
       },
       body: JSON.stringify({ text }),
     }).then(res => res.json()).then((res: Mail) => setSantaChat([...santaChat, res]));
@@ -124,7 +127,7 @@ const Profile: FunctionComponent<{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": props.info.csrf_token,
+        "X-CSRFToken": user.csrf_token,
       },
       body: JSON.stringify({ text }),
     }).then(res => res.json()).then((res: Mail) => setGifteeChat([...gifteeChat, res]));
@@ -138,7 +141,7 @@ const Profile: FunctionComponent<{
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-CSRFToken": props.info.csrf_token,
+            "X-CSRFToken": user.csrf_token,
           },
           body: JSON.stringify({
             ids: unreadSanta.map(msg => msg.id),
@@ -157,7 +160,7 @@ const Profile: FunctionComponent<{
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-CSRFToken": props.info.csrf_token,
+            "X-CSRFToken": user.csrf_token,
           },
           body: JSON.stringify({
             ids: unreadGiftee.map(msg => msg.id),
@@ -173,7 +176,7 @@ const Profile: FunctionComponent<{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": props.info.csrf_token,
+        "X-CSRFToken": user.csrf_token,
       },
     }).then(res => res.json()).then(data => {
       setSeason(data.season);
@@ -188,7 +191,7 @@ const Profile: FunctionComponent<{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": props.info.csrf_token,
+        "X-CSRFToken": user.csrf_token,
       },
     }).then(res => res.json()).then(data => {
       setSeason(data.season);
@@ -217,7 +220,7 @@ const Profile: FunctionComponent<{
         signupsStart={season.registration_open}
         signupsEnd={season.registration_close}
         shipBy={season.season_close}
-        debug={props.info.is_debug}
+        debug={user.is_debug}
       />
       <main className="content" role="main">
         <div className={clsx("card", "card-santa", { "card-flipped": leftCardFlipped })}>
@@ -226,8 +229,8 @@ const Profile: FunctionComponent<{
             unreadMessageCount={unreadSanta.length}
             onChatButton={flipSantaCard}
           >
-            <img className="card-avatar" src={props.info.avatar_url} />
-            {props.info.username}
+            <img className="card-avatar" src={user.avatar_url} />
+            {user.username}
           </CardHeader>
           {participation && participation.santa ? (
             <div className="card-body">
@@ -249,12 +252,12 @@ const Profile: FunctionComponent<{
             </div>
           ) : (
             <div className="card-body">
-              {props.info.is_active ? (
+              {user.is_active ? (
                 <EnrollmentCard
                   year={season.id}
                   signupsEnd={season.registration_close}
                   isParticipatable={season.is_registration_open}
-                  canParticipate={props.info.can_participate}
+                  canParticipate={user.can_participate}
                   participation={participation}
                   countries={countries}
                   addressFormError={addressFormError}
@@ -262,7 +265,7 @@ const Profile: FunctionComponent<{
                   onUnenroll={unenroll}
                 />
               ) : (
-                <BannedCard username={props.info.username} />
+                <BannedCard username={user.username} />
               )}
             </div>
           )}

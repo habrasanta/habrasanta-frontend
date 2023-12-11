@@ -2,15 +2,16 @@ import { FunctionComponent } from "preact";
 import { route } from "preact-router";
 import { useEffect } from "preact/hooks";
 
-import { BackendInfo, Season } from "../models";
+import { Season } from "../models";
+import { useUser } from "../contexts/UserContext";
 
-const Home: FunctionComponent<{
-  info: BackendInfo,
-}> = props => {
+const Home: FunctionComponent = () => {
+  const user = useUser();
+
   useEffect(() => {
     fetch("/api/v1/seasons/latest")
       .then(res => res.ok ? res.json() : Promise.reject(res))
-      .then((data: Season) => route("/" + data.id + (props.info.is_authenticated ? "/profile/" : "/"), true))
+      .then((data: Season) => route("/" + data.id + (user.is_authenticated ? "/profile/" : "/"), true))
       .catch(res => res.json().then(err => alert(err.detail)));
   }, []);
 
