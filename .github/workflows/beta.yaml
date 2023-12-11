@@ -15,6 +15,7 @@ jobs:
           NODE_ENV: production
       - name: Deploy!
         run: |
+          mkdir ~/.ssh
           echo "${{vars.SSH_KNOWN_HOSTS}}" > ~/.ssh/known_hosts
           eval `ssh-agent`
           echo "${{secrets.SSH_PRIVATE_KEY}}" | ssh-add -
