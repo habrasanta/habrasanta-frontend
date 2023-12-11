@@ -4,7 +4,7 @@ import "./Footer.css";
 
 const Footer: FunctionComponent = () => (
   <footer className="footer" role="contentinfo">
-    <a className="footer-designer" href="http://novosylov.livejournal.com/">
+    <a className="footer-designer" href="https://novosylov.livejournal.com/">
       Валя Новоселов<br/>дизайнер
     </a>
     <div className="footer-feedback">
