@@ -291,7 +291,9 @@ const Profile: FunctionComponent<{
                     fullName={participation.giftee.fullname}
                     postcode={participation.giftee.postcode}
                     address={participation.giftee.address}
+                    country={participation.giftee.country}
                     isOverdue={season.is_closed}
+                    countries={countries}
                     onSubmit={markShipped}
                   />
                 )}

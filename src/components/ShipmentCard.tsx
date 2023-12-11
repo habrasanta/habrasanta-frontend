@@ -1,6 +1,8 @@
 import { h, FunctionComponent } from "preact";
 import { useState } from "preact/hooks";
 
+import { Country } from "../models";
+
 import PostageStamp from "./PostageStamp";
 import Button from "./Button";
 
@@ -9,7 +11,9 @@ const ShipmentCard: FunctionComponent<{
   fullName: string;
   postcode: string;
   address: string;
+  country: string;
   isOverdue: boolean;
+  countries: Country[];
   onSubmit: () => void;
 }> = props => {
   const [checked, setChecked] = useState(false);
@@ -36,6 +40,18 @@ const ShipmentCard: FunctionComponent<{
         readonly
         value={props.address}
       />
+      <select
+        id="country"
+        value={props.country}
+        disabled
+      >
+        <option disabled value="select">Не указана</option>
+        {props.countries.map(country => (
+          <option key={country.code} value={country.code}>
+            {country.name}
+          </option>
+        ))}
+      </select>
       {props.isOverdue ? (
         <div className="card-closed">
           Вы так и не отправили подарок вовремя :-(

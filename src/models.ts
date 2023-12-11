@@ -43,6 +43,7 @@ export interface Giftee {
   fullname: string;
   postcode: string;
   address: string;
+  country: string;
   gift_delivered_at?: string;
 }
 
