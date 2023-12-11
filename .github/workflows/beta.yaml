@@ -1,4 +1,4 @@
-name: Build and deploy the main branch on beta.habrasanta.org
+name: Build the main branch and deploy to beta.habrasanta.org
 on:
   push:
     branches:
