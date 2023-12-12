@@ -1,4 +1,4 @@
-import { Fragment, FunctionComponent } from "preact";
+import { h, Fragment, FunctionComponent } from "preact";
 
 const Plural: FunctionComponent<{
   n: number;
