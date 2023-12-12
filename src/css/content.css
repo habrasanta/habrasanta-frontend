@@ -3,7 +3,7 @@
   margin: 70px auto;
   max-width: 940px;
   display: flex;
-  gap: 20px;
+  gap: var(--grid-unit-m);
   justify-content: center;
 }
 

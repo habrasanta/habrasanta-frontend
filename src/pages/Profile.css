@@ -4,22 +4,13 @@
   box-sizing: border-box;
 }
 
-.profile .angular {
-  opacity: 0;
-  transition: opacity 500ms;
-}
-
-.profile .angular.loaded {
-  opacity: 1;
-}
-
 .profile-loading {
   background: rgba(0, 0, 0, 0.8);
   bottom: 0;
   color: #fff;
   font-size: 50px;
   left: 0;
-  padding: 100px 0;
+  padding: var(--grid-unit-xxl) 0;
   position: fixed;
   right: 0;
   text-align: center;

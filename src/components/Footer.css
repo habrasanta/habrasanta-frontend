@@ -1,11 +1,11 @@
 .footer {
-  padding: 0 10px 20px;
+  padding: 0 var(--grid-unit-m) var(--grid-unit-l);
   margin: 30px auto;
   max-width: 940px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  gap: 20px;
+  gap: var(--grid-unit-m);
 }
 
 @media only screen and (max-width: 720px) {
@@ -17,9 +17,8 @@
 
 .footer-designer {
   background: url(../images/novosylov.png) no-repeat 0px 10px;
-  color: #fff;
+  color: var(--color-suva-gray);
   float: right;
-  opacity: 0.5;
   padding-left: 29px;
   text-decoration: none;
   transition: opacity 0.3s ease-out;
@@ -30,11 +29,11 @@
 }
 
 .footer-feedback {
-  color: #857892;
+  color: var(--color-suva-gray);
 }
 
 .footer-feedback a {
-  color: #9989ae;
+  color: var(--color-suva-gray);
 }
 
 .footer-feedback a:hover {

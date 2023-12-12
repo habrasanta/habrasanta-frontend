@@ -10,13 +10,13 @@
 }
 
 .logo h1 {
-  color: #b40000;
-  font-size: 20px;
+  color: var(--color-milano-red);
+  font-size: var(--font-size-l);
 }
 
 .logo h2 {
-  color: #7ea1b5;
-  font-size: 14px;
+  color: var(--color-sheakspeare-blue);
+  font-size: var(--font-size-s);
 }
 
 .logo .bug {

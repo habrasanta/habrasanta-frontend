@@ -1,18 +1,18 @@
 .counters {
   height: 67px;
   display: flex;
-  gap: 20px;
+  gap: var(--grid-unit-m);
   flex: 1;
 }
 
 .counters li {
   float: left;
-  font-size: 17px;
+  font-size: var(--font-size-m);
   text-align: center;
 }
 
 .counters b {
   display: block;
-  font-size: 20px;
+  font-size:var(--font-size-l);
   font-weight: bold;
 }
