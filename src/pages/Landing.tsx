@@ -1,50 +1,35 @@
 import { h, FunctionComponent, Fragment } from "preact";
-import { useEffect, useState } from "preact/hooks";
-import { route } from "preact-router";
-
-import { User, Season } from "../models";
 
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
 
-import "./Landing.css";
 import { useUser } from "../contexts/UserContext";
+import { useCurrentSeason } from "../contexts/CurrentSeason";
+
+import "./Landing.css";
 
 const Landing: FunctionComponent<{
   year: string;
 }> = props => {
   const user = useUser();
-  const [season, setSeason] = useState<Season | undefined>();
-
-  useEffect(() => {
-    fetch("/api/v1/seasons/" + props.year)
-      .then(res => res.ok ? res.json() : Promise.reject(res))
-      .then((data: Season) => setSeason(data))
-      .catch(res => res.json().then(err => alert(err.detail)));
-  }, []);
-
-  if (user.is_authenticated) {
-    route("/" + props.year + "/profile", true);
-    return null;
-  }
+  const currentSeason = useCurrentSeason();
 
   const loginUrl = "/backend/login?next=%2F" + props.year + "%2Fprofile%2F";
 
-  return season ? (
-    <Fragment>
-      {season.is_closed && (
+  return <Fragment>
+      {currentSeason.is_closed && (
         <div className="alert">
-          Внимание! АДМ-{season.id} уже завершен, вы смотрите архивную версию!
+          Внимание! АДМ-{currentSeason.id} уже завершен, вы смотрите архивную версию!
         </div>
       )}
       <header className="banner" role="banner">
         <div className="banner-inner">
           <div className="members banner-members">
-            участников<br/>{ season.member_count }
+            участников<br/>{ currentSeason.member_count }
           </div>
           <div className="banner-logo">
-          <Logo year={season.id} debug={user.is_debug} />
+          <Logo year={currentSeason.id} debug={user.is_debug} />
           </div>
           <h3 className="banner-welcome">
             Рады видеть тебя в нашем клубе<br/>Анонимных Дедов Морозов
@@ -91,8 +76,7 @@ const Landing: FunctionComponent<{
         </Button>
       </main>
       <Footer />
-    </Fragment>
-  ) : null;
+    </Fragment>;
 };
 
 export default Landing;
