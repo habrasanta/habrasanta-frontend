@@ -5,11 +5,12 @@ import { UserProvider, useUser } from './contexts/UserContext';
 import Home from "./pages/Home";
 import Landing from "./pages/Landing";
 import Profile from "./pages/Profile";
+import Loading from "./components/Loading";
 
 const Routes: FunctionComponent = () => {
   const user = useUser();
 
-  if (!user) return <p style={{color:"white"}}>Loading backend info...</p>;
+  if (!user) return <Loading />;
 
   return <Router>
     <Route path="/" component={Home} />

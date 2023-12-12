@@ -1,7 +1,8 @@
 .card {
   -webkit-perspective: 800px;
   perspective: 800px;
-  width: 380px;
+  max-width: 380px;
+  width: 100%;
 }
 
 .card-heading,
@@ -34,12 +35,12 @@
 }
 
 .card-body {
-  height: 380px;
+  min-height: 380px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transition: -webkit-transform 1s;
   transition: transform 1s;
-  width: 380px;
+  max-width: 380px;
 }
 
 .card-front,
@@ -48,10 +49,11 @@
   backface-visibility: hidden;
   border-radius: 0 0 5px 5px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) inset;
-  height: 330px;
+  min-height: 330px;
   padding: 25px;
   position: absolute;
-  width: 330px;
+  max-width: 330px;
+  width: 100%;
 }
 
 .card-front {
@@ -70,14 +72,13 @@
   transform: rotateY(180deg);
 }
 
-.card-santa {
-  float: left;
+/* .card-santa {
   margin-left: 80px;
 }
 
 .card-giftee {
   margin-left: 480px;
-}
+} */
 
 .card-title {
   margin: 0px 42px;
@@ -116,6 +117,8 @@
   padding-left: 126px;
   padding-top: 41px;
   width: 25px;
+  position: absolute;
+  right: 25px;
 }
 
 .card-decorated {
@@ -196,7 +199,7 @@
 
 .card-closed {
   color: #999;
-  padding: 13px 0;
+  padding: 0 0;
   text-align: center;
 }
 

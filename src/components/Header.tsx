@@ -19,17 +19,6 @@ const Header: FunctionComponent<{
   <header className="header" role="banner">
     <Logo className="header-logo" year={props.year} debug={props.debug} />
     <div className="header-inner">
-      <ul className="usercontrols header-usercontrols">
-        <li className="usercontrols-item usercontrols-source">
-          <a href="https://github.com/habrasanta" title="Исходный код"></a>
-        </li>
-        <li className="usercontrols-item usercontrols-help">
-          <a href="https://ru.wikipedia.org/wiki/Тайный_Санта" title="Помощь"></a>
-        </li>
-        <li className="usercontrols-item usercontrols-logout">
-          <a href={"/backend/logout?next=%2F" + props.year + "%2F"} title="Выйти"></a>
-        </li>
-      </ul>
       <ul className="counters header-counters">
         <li>
           <b>{props.memberCount}</b>
@@ -42,6 +31,17 @@ const Header: FunctionComponent<{
         <li>
           <b>{props.deliveredCount}</b>
           <Plural n={props.deliveredCount} one="получил" few="получили" many="получили" />
+        </li>
+      </ul>
+      <ul className="usercontrols header-usercontrols">
+        <li className="usercontrols-item usercontrols-source">
+          <a href="https://github.com/habrasanta" title="Исходный код"></a>
+        </li>
+        <li className="usercontrols-item usercontrols-help">
+          <a href="https://ru.wikipedia.org/wiki/Тайный_Санта" title="Помощь"></a>
+        </li>
+        <li className="usercontrols-item usercontrols-logout">
+          <a href={"/backend/logout?next=%2F" + props.year + "%2F"} title="Выйти"></a>
         </li>
       </ul>
       <ul className="timetable header-timetable">

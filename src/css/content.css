@@ -1,5 +1,16 @@
 .content {
   padding: 0 10px;
   margin: 70px auto;
-  width: 940px;
+  max-width: 940px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 720px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
 }

@@ -1,12 +1,13 @@
 .counters {
   height: 67px;
-  margin-right: 160px;
+  display: flex;
+  gap: 20px;
+  flex: 1;
 }
 
 .counters li {
   float: left;
   font-size: 17px;
-  margin-right: 40px;
   text-align: center;
 }
 

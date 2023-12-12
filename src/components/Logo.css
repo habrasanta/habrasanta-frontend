@@ -5,6 +5,7 @@
   padding-top: 105px;
   text-align: center;
   width: 205px;
+  min-width: 205px;
   position: relative;
 }
 
