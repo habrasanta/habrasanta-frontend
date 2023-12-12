@@ -51,7 +51,7 @@
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) inset;
   min-height: 380px;
   max-height: 380px;
-  padding: var(--grid-unit-m);
+  padding: var(--grid-unit-m) var(--grid-unit-l);
   position: absolute;
   width: 100%;
   box-sizing: border-box;
