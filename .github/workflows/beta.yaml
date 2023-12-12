@@ -1,14 +1,19 @@
 name: Build the main branch and deploy it to beta.habrasanta.org
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Test each and every commit
     branches:
       - main
+    types:
+      - completed
 concurrency:
   group: deploy
   cancel-in-progress: false
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
