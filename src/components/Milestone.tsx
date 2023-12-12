@@ -19,7 +19,7 @@ const Milestone: FunctionComponent<{
   date: string;
 }> = ({ date }) => {
   const d = new Date(date);
-  return d.getDate() + " " + months[d.getMonth()];
+  return <Fragment>{d.getDate() + " " + months[d.getMonth()]}</Fragment>;
 };
 
 export default Milestone;
