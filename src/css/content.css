@@ -11,6 +11,6 @@
   .content {
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin: 20px auto;
   }
 }

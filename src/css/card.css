@@ -10,6 +10,7 @@
 .card-back {
   background: #fff;
   color: #333;
+  box-sizing: border-box;
 }
 
 .card-heading {
