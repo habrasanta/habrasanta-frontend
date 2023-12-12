@@ -21,5 +21,7 @@ jobs:
           mkdir ~/.ssh
           echo "${{vars.SSH_KNOWN_HOSTS}}" > ~/.ssh/known_hosts
           eval `ssh-agent`
-          echo "${{secrets.SSH_PRIVATE_KEY}}" | ssh-add -
+          echo $SSH_PRIVATE_KEY | ssh-add -
           rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/beta.habrasanta.org
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
