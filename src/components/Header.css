@@ -1,6 +1,6 @@
 .header {
   color: #fff;
-  padding: var(--grid-unit-m) var(--grid-unit-s) 0;
+  padding: var(--grid-unit-m) var(--grid-unit-m) 0;
   margin: 0 auto;
   max-width: 940px;
   display: flex;
