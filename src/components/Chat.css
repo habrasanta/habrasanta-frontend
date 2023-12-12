@@ -33,7 +33,21 @@
   text-align: center;
 }
 
-.chat-input {
-  background: url(../images/chat_input.png) 302px 9px no-repeat !important;
+.chat-input { 
   padding-right: 35px !important;
+}
+
+.chat-submit {
+  background: url(../images/chat_input.png) 9px 9px no-repeat !important;
+  position: absolute;
+  right: 0;
+  border: 0;
+  background-color: transparent;
+  width: 35px;
+  height: 38px;
+  top: 5px;
+}
+
+.chat-form {
+  position: relative;
 }

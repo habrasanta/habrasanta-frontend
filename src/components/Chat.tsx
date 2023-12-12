@@ -45,7 +45,9 @@ const Chat: FunctionComponent<{
           e.preventDefault();
           props.onSubmit(text);
           setText("");
-        }}>
+        }}
+          className="chat-form"
+        >
           <input
             className="chat-input"
             type="text"
@@ -54,6 +56,7 @@ const Chat: FunctionComponent<{
             value={text}
             onInput={(e: Event) => setText((e.target as HTMLInputElement).value)}
           />
+          <button type="submit" className="chat-submit" />
         </form>
       )}
     </div>
