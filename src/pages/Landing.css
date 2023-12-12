@@ -120,6 +120,9 @@ a {
   margin: 0 auto 30px;
   padding: 42px 27px;
   width: 205px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner-welcome {

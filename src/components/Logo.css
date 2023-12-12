@@ -1,17 +1,19 @@
 .logo {
-  background: url(../images/logo.png);
+  background: url(../images/logo.svg);
+  background-size: cover;
   font-weight: bold;
-  height: 71px;
-  padding-top: 105px;
+  height: 54px;
+  padding-top: 118px;
   text-align: center;
-  width: 205px;
-  min-width: 205px;
+  width: 240px;
+  min-width: 240px;
   position: relative;
 }
 
 .logo h1 {
   color: var(--color-milano-red);
   font-size: var(--font-size-l);
+  line-height: 1;
 }
 
 .logo h2 {
