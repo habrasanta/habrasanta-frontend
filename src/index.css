@@ -3,6 +3,30 @@
 
 :root {
   --font-family: "PT Sans", Arial, sans-serif;
+  
+  --color-bossanova-purple: #382751;
+  --color-bossanova-purple-light: #453062;
+  --color-affair-violet: #754787;
+  --color-sheakspeare-blue: #3B9ACC;
+  --color-burgundy-red: #710b08;
+  --color-milano-red: #bc0f0c;
+  --color-christi-green: #47B11A;
+  --color-suva-gray: #898788;
+
+  --grid-unit-s: 5px;
+  --grid-unit-m: 15px;
+  --grid-unit-l: 30px;
+  --grid-unit-xl: 50px;
+  --grid-unit-xxl: 100px;
+
+  --radius-s: 5px;
+  --radius-m: 10px;
+
+  --font-size-xs: 12px;
+  --font-size-s: 14px;
+  --font-size-m: 16px;
+  --font-size-l: 20px;
+  --font-size-xl: 30px;
 }
 
 html,

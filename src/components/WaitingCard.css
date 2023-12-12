@@ -1,8 +1,8 @@
 .receiving {
-  background: #3a9acc !important;
+  background: var(--color-sheakspeare-blue) !important;
   color: #fff !important;
   text-align: center;
-  font-size: 15px;
+  font-size: var(--font-size-m);
 }
 
 .receiving img {
@@ -13,7 +13,7 @@
 
 .receiving h3 {
   font-weight: bold;
-  font-size: 22px;
+  font-size: var(--font-size-l);
   margin-bottom: 10px;
 }
 
@@ -31,7 +31,7 @@
   background: #f4f9ff;
   color: #333;
   float: right;
-  font-size: 15px;
+  font-size: var(--font-size-l);
   line-height: 21px;
   margin-right: 14px;
   transition: none;

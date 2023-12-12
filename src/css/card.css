@@ -9,27 +9,27 @@
 .card-front,
 .card-back {
   background: #fff;
-  color: #333;
+  color: #000;
 }
 
 .card-heading {
   background-clip: padding-box;
-  border-radius: 5px 5px 0px 0px;
-  font-size: 20px;
+  border-radius: var(--radius-m) var(--radius-m) 0px 0px;
+  font-size: var(--font-size-l);
   line-height: 60px;
   text-align: center;
 }
 
 .card .chat-counter {
   float: right;
-  background: #b40000;
+  background: var(--color-milano-red);
   color: #fff;
   height: 16px;
   width: 16px;
   padding: 0;
   font-size: 10px;
   line-height: 15px;
-  border-radius: 8px;
+  border-radius: 100%;
   margin-top: -17px;
   position: absolute;
 }
@@ -47,10 +47,11 @@
 .card-back {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 var(--radius-m) var(--radius-m);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) inset;
-  min-height: 330px;
-  padding: 25px;
+  min-height: 380px;
+  max-height: 380px;
+  padding: var(--grid-unit-m);
   position: absolute;
   width: 100%;
   box-sizing: border-box;
@@ -82,19 +83,23 @@
 
 .card-title {
   margin: 0px 42px;
+  display: flex;
+  gap: var(--grid-unit-s);
+  align-items: center;
+  justify-content: center;
 }
 
 .card-avatar {
-  border-radius: 5px;
-  height: 40px;
+  border-radius: var(--radius-s);
+  height: 30px;
   margin-right: 6px;
   margin-top: -3px;
   vertical-align: middle;
-  width: 40px;
+  width: 30px;
 }
 
 .card-banned a {
-  color: #337ab7;
+  color: var(--color-sheakspeare-blue);
   text-decoration: none;
 }
 
@@ -103,13 +108,13 @@
 }
 
 .card-banned p {
-  font-size: 15px;
-  margin-bottom: 15px;
+  font-size: var(--font-size-m);
+  margin-bottom: var(--grid-unit-m)
 }
 
 .card-stamp {
   background: url(../images/stamp.png);
-  color: #7f9eb1;
+  color: var(--color-sheakspeare-blue);
   float: right;
   font-size: 8px;
   height: 15px;
@@ -126,8 +131,8 @@
 }
 
 .card-button {
-  background: #754787;
-  font-size: 15px;
+  background: var(--color-affair-violet);
+  font-size: var(--font-size-m);
   width: 100%;
 }
 
@@ -135,14 +140,10 @@
   background: #945aab;
 }
 
-.card-button:active {
-  background: #543360;
-}
-
 .card-nothing-sent {
-  background: #3b9bcd;
+  background: var(--color-sheakspeare-blue);
   color: #fff;
-  font-size: 22px;
+  font-size: var(--font-size-l);
   font-weight: bold;
   text-align: center;
 }
@@ -171,7 +172,7 @@
   background-repeat: no-repeat;
   cursor: pointer;
   display: inline-block;
-  font-size:15px;
+  font-size:var(--font-size-s);
   height: 17px;
   line-height: 17px;
   padding-left: 30px;
@@ -183,14 +184,14 @@
 }
 
 .card-happy {
-  background: #6da900 !important;
+  background: var(--color-christi-green) !important;
   color: #fff !important;
   text-align: center;
 }
 
 .card-happy h3 {
-  font-size: 26px;
-  margin-bottom: 260px;
+  font-size: var(--font-size-xl);
+  font-weight: bold;
 }
 
 .card-happy a {
@@ -224,9 +225,9 @@
 }
 
 .card-gift-sent {
-  background: #b40000 !important;
+  background: var(--color-milano-red) !important;
   color: #fff !important;
-  font-size: 15px;
+  font-size: var(--font-size-m);
   text-align: center;
 }
 
@@ -238,7 +239,7 @@
 
 .card-gift-sent h3 {
   font-weight: bold;
-  font-size: 22px;
+  font-size: var(--font-size-xl);
   margin-bottom: 10px;
 }
 
@@ -250,18 +251,18 @@
 
 .card-gift-received h3 {
   font-weight: bold;
-  font-size: 22px;
+  font-size: var(--font-size-xl);
 }
 
 .card-waiting {
-  font-size: 16px;
+  font-size: var(--font-size-m);
   text-align: center;
 }
 
 .card-waiting h3 {
-  font-size: 21px;
+  font-size: var(--font-size-xl);
   font-weight: bold;
-  margin: 15px 0;
+  margin: var(--grid-unit-m) 0;
 }
 
 .card-waiting a {
@@ -271,7 +272,7 @@
 .card-danger .card-heading,
 .card-danger .card-front/*,
 .card-danger .card-back*/ {
-  background: #b40000;
+  background: var(--color-milano-red);
   color: #fff;
 }
 
@@ -300,8 +301,8 @@ textarea {
 
 input[type='text'].error,
 textarea.error {
-  border-color: #a94442;
-  color: #a94442;
+  border-color: var(--color-milano-red);
+  color: var(--color-milano-red);
 }
 
 label {
@@ -313,9 +314,9 @@ label {
 }
 
 .shipping-button {
-  background: #b40000;
+  background: var(--color-milano-red);
   float: right;
-  font-size: 15px;
+  font-size: var(--font-size-m);
   line-height: 21px;
   margin-right: 14px;
   transition: none;
@@ -323,7 +324,7 @@ label {
 
 .shipping-button:after {
   border-bottom: 19px solid transparent;
-  border-left: 1em solid #b40000;
+  border-left: 1em solid var(--color-milano-red);
   border-top: 21px solid transparent;
   content: "";
   margin-left: 8px;
@@ -337,12 +338,4 @@ label {
 
 .shipping-button:hover:after {
   border-left: 1em solid #d30000;
-}
-
-.shipping-button:active {
-  background: #990000;
-}
-
-.shipping-button:active:hover {
-  border-left: 1em solid #990000;
 }

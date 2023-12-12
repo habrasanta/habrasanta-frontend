@@ -1,6 +1,6 @@
 .loading {
   min-height: 200px;
-  padding-top: 100px;
+  padding-top: var(--grid-unit-xxl);
 }
 
 .ripple {
@@ -8,7 +8,7 @@
   color: #fff;
   width: 12px;
   height: 12px;
-  background-color: #69508f;
+  background-color: var(--color-bossanova-purple-light);
   margin: 0 auto;
   border-radius: 100%;
   animation: ripple .7s linear infinite;
