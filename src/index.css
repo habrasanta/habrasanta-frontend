@@ -29,12 +29,16 @@
   --font-size-xl: 30px;
 }
 
-html,
-body,
-#root {
-  min-height: 100%;
+html {
+  height: 100%;
 }
 
 body {
+  display: flex;
   font: 14px/1.4 var(--font-family);
+  min-height: 100%;
+}
+
+#root {
+  flex: 1;
 }
