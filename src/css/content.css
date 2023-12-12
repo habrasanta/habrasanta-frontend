@@ -1,5 +1,5 @@
 .content {
-  padding: 0 10px;
+  padding: 0 var(--grid-unit-m);
   margin: 70px auto;
   max-width: 940px;
   display: flex;
