@@ -67,9 +67,11 @@ const Profile: FunctionComponent<{
   }, []);
 
   useEffect(() => {
-    if (currentSeason.is_matched || currentSeason.is_closed) {
-      getSeasonParticipation(props.year).then(data => setParticipation(data));
+    getSeasonParticipation(props.year).then(data => setParticipation(data)).catch(() => {});
+    if (participation?.santa) {
       getSeasonSantaChat(props.year).then(data => setSantaChat(data));
+    }
+    if (participation?.giftee) {
       getSeasonGifteeChat(props.year).then(data => setGifteeChat(data));
     }
   }, [props.year]);
