@@ -10,7 +10,6 @@
 .card-back {
   background: #fff;
   color: #333;
-  box-sizing: border-box;
 }
 
 .card-heading {
@@ -53,8 +52,8 @@
   min-height: 330px;
   padding: 25px;
   position: absolute;
-  max-width: 330px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .card-front {
