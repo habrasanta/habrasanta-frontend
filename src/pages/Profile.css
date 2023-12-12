@@ -1,5 +1,6 @@
 .profile {
-  background: #382751 url(../images/background.png);
+  background: #382751 url(../images/pattern.png);
+  background-size: 190px;
   height: 100%;
   box-sizing: border-box;
 }

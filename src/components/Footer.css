@@ -1,6 +1,7 @@
 .footer {
   padding: 0 var(--grid-unit-m) var(--grid-unit-l);
-  margin: 30px auto;
+  margin: var(--grid-unit-m) auto 0;
+  padding-bottom: var(--grid-unit-m);
   max-width: 940px;
   display: flex;
   flex-direction: row-reverse;
