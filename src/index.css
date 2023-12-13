@@ -5,13 +5,13 @@
   --font-family: "PT Sans", Arial, sans-serif;
   
   --color-bossanova-purple: #382751;
-  --color-bossanova-purple-light: #453062;
+  --color-bossanova-purple-light: rgba(69, 48, 98, .5);
   --color-affair-violet: #754787;
   --color-sheakspeare-blue: #3B9ACC;
   --color-burgundy-red: #710b08;
   --color-milano-red: #bc0f0c;
   --color-christi-green: #47B11A;
-  --color-suva-gray: #898788;
+  --color-mist-gray: #9c98a2;
 
   --grid-unit-s: 5px;
   --grid-unit-m: 15px;

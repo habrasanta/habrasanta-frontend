@@ -5,7 +5,7 @@
 }
 
 .chat-message {
-  color: var(--color-suva-gray);
+  color: var(--color-mist-gray);
   font-size: var(--font-size-xs);
   margin: var(--grid-unit-m) var(--grid-unit-xl) var(--grid-unit-m) 0;
 }
@@ -29,7 +29,7 @@
 }
 
 .chat-last-visit {
-  color: var(--color-suva-gray);
+  color: var(--color-mist-gray);
   text-align: center;
 }
 
