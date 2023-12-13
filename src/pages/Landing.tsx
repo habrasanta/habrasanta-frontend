@@ -25,7 +25,7 @@ const Landing: FunctionComponent<{
   }, []);
 
   if (user.is_authenticated) {
-    route("/" + props.year + "/profile", true);
+    route("/" + props.year + "/profile/", true);
     return null;
   }
 
