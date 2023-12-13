@@ -179,7 +179,7 @@
   background-repeat: no-repeat;
   cursor: pointer;
   display: inline-block;
-  font-size:var(--font-size-s);
+  font-size:var(--font-size-m);
   height: 17px;
   line-height: 17px;
   padding-left: 30px;
@@ -191,7 +191,9 @@
 }
 
 .card-happy {
-  background: var(--color-christi-green) !important;
+  background: url(../images/happy-new-year.png) !important;
+  background-color: var(--color-christi-green)!important;
+  background-size: 380px!important;
   color: #fff !important;
   text-align: center;
 }
@@ -248,10 +250,13 @@
   font-weight: bold;
   font-size: var(--font-size-xl);
   margin-bottom: 10px;
+  line-height: 1.2;
 }
 
 .card-gift-received {
-  background: url(../images/gift_received.jpg) !important;
+  background: url(../images/gift_received.png) !important;
+  background-color: var(--color-milano-red)!important;
+  background-size: 380px!important;
   color: #fff !important;
   text-align: center;
 }
@@ -259,6 +264,7 @@
 .card-gift-received h3 {
   font-weight: bold;
   font-size: var(--font-size-xl);
+  line-height: 1.2;
 }
 
 .card-waiting {
@@ -270,6 +276,7 @@
   font-size: var(--font-size-xl);
   font-weight: bold;
   margin: var(--grid-unit-m) 0;
+  line-height: 1.2;
 }
 
 .card-waiting a {
@@ -285,6 +292,7 @@
 
 label,
 input[type='text'],
+input[type='number'],
 textarea {
   font: 16px/1.4 'PT Sans', Arial, sans-serif;
   box-sizing: border-box;
@@ -292,24 +300,35 @@ textarea {
 }
 
 input[type='text']:focus,
+input[type='number']:focus,
 textarea:focus {
   outline: 0;
+  border: 1px solid var(--color-sheakspeare-blue);
 }
 
 input[type='text'],
+input[type='number'],
 textarea {
   background: #fff;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 7px 7px;
-  margin: 5px 0;
+  border-radius: var(--radius-s);
+  padding: 7px;
+  margin: var(--grid-unit-s) 0;
   width: 100%;
 }
 
 input[type='text'].error,
-textarea.error {
+input[type='number'].error,
+textarea.error, 
+select.error {
   border-color: var(--color-milano-red);
   color: var(--color-milano-red);
+}
+
+input[type='text']:disabled,
+input[type='number']:disabled,
+textarea:disabled {
+  opacity: .7;
 }
 
 label {

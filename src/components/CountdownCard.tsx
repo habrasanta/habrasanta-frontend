@@ -29,7 +29,7 @@ const CountdownCard: FunctionComponent<{
           Адреса уже розданы
         </h3>
         <p>
-          Подписывайтесь на обновления <a href="http://habrahabr.ru/users/clubadm/">@clubadm</a>,
+          Подписывайтесь на обновления <a href="https://habr.com/users/clubadm/" target="_blank">@clubadm</a>,
           чтобы не&nbsp;пропустить регистрацию на&nbsp;следующий год.
         </p>
       </Fragment>

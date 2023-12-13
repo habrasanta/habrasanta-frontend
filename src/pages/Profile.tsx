@@ -77,7 +77,7 @@ const Profile: FunctionComponent<{
     return null;
 
   const unreadSanta = santaChat.filter(mail => !mail.read_date && !mail.is_author);
-  const unreadGiftee = santaChat.filter(mail => !mail.read_date && !mail.is_author);
+  const unreadGiftee = gifteeChat.filter(mail => !mail.read_date && !mail.is_author);
 
   const enroll = (form: AddressForm) => {
     fetch("/api/v1/seasons/" + props.year + "/participation", {
@@ -155,7 +155,7 @@ const Profile: FunctionComponent<{
   const flipGifteeCard = () => {
     setRightCardFlipped(oldState => {
       const newState = !oldState;
-      if (newState && unreadSanta.length > 0) {
+      if (newState && unreadGiftee.length > 0) {
         fetch("/api/v1/messages/mark_read", {
           method: "POST",
           headers: {
@@ -180,9 +180,11 @@ const Profile: FunctionComponent<{
       },
     }).then(res => res.json()).then(data => {
       setSeason(data.season);
-      setParticipation(data.participation);
       setRightCardFlipped(true);
-      setTimeout(() => setRightCardFlipped(false), 400);
+      setTimeout(() => {
+        setParticipation(data.participation);
+      }, 500);
+      setTimeout(() => setRightCardFlipped(false), 1000);
     });
   };
 
@@ -195,9 +197,11 @@ const Profile: FunctionComponent<{
       },
     }).then(res => res.json()).then(data => {
       setSeason(data.season);
-      setParticipation(data.participation);
       setLeftCardFlipped(true);
-      setTimeout(() => setLeftCardFlipped(false), 400);
+      setTimeout(() => {
+        setParticipation(data.participation);
+      }, 500);
+      setTimeout(() => setLeftCardFlipped(false), 1000);
     });
   };
 

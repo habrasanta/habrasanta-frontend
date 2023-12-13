@@ -9,7 +9,7 @@ const BannedCard: FunctionComponent<{
       не&nbsp;нажал кнопку подтверждения получения подарка. Скорее
       всего, он просто забыл об&nbsp;этом, но нам хотелось&nbsp;бы это
       выяснить. Напиши, пожалуйста, в&nbsp;ЛС
-      хабрапользователю <a href="http://habrahabr.ru/users/negasus/">@negasus</a> о&nbsp;том,
+      хабрапользователю <a target="_blank" href="https://habr.com/users/negasus/">@negasus</a> о&nbsp;том,
       что ты сейчас прочитал, и&nbsp;мы попробуем вместе
       разобраться. После этого ты сможешь заполнить свои данные
       и&nbsp;участвовать в&nbsp;ХабраАДМ.
