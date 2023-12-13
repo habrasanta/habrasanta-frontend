@@ -25,9 +25,12 @@
 }
 
 .button-primary:hover {
-  background: #45b1e9;
+  background: var(--color-sheakspeare-blue);
+  filter: saturate(1.5);
 }
 
 .button-primary:active {
+  background: var(--color-sheakspeare-blue);
+  filter: saturate(0.8) contrast(1.5);
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2) inset;
 }

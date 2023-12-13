@@ -123,7 +123,7 @@
   padding-top: 41px;
   width: 25px;
   position: absolute;
-  right: 25px;
+  right: var(--grid-unit-l);
 }
 
 .card-decorated {
@@ -137,8 +137,15 @@
 }
 
 .card-button:hover {
-  background: #945aab;
+  background: var(--color-affair-violet);
+  filter: saturate(1.5);
 }
+
+.card-button:active {
+  background: var(--color-affair-violet);
+  filter: saturate(0.8) contrast(1.5);
+}
+
 
 .card-nothing-sent {
   background: var(--color-sheakspeare-blue);
@@ -199,7 +206,7 @@
 }
 
 .card-closed {
-  color: #999;
+  color: var(--color-mist-gray);
   padding: 0 0;
   text-align: center;
 }
@@ -333,9 +340,15 @@ label {
 }
 
 .shipping-button:hover {
-  background: #d30000;
+  background: var(--color-milano-red);
+  filter: saturate(1.3);
+}
+
+.shipping-button:active {
+  background: var(--color-milano-red);
+  filter: saturate(0.8) contrast(1.5);
 }
 
 .shipping-button:hover:after {
-  border-left: 1em solid #d30000;
+  border-left: 1em solid var(--color-milano-red);
 }
