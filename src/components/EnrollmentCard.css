@@ -14,10 +14,14 @@
 
 #country {
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: var(--radius-s);
   background: #fff;
   width: 100%;
-  padding: 7px;
+  padding: 7px 15px 7px 7px;
   font: 16px/1.4 'PT Sans', Arial, sans-serif;
-  margin: 5px 0 15px 0;
+  margin: 0 0 var(--grid-unit-m);
+}
+
+#country:disabled {
+  opacity: .7;
 }

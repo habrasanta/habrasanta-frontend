@@ -11,6 +11,11 @@
   transition: background 0.3s;
 }
 
+button:disabled {
+  filter: saturate(0);
+  cursor: not-allowed;
+}
+
 .button::-moz-focus-inner {
   padding: 0;
   border: 0;
@@ -33,4 +38,9 @@
   background: var(--color-sheakspeare-blue);
   filter: saturate(0.8) contrast(1.5);
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2) inset;
+}
+
+
+button:disabled:hover {
+  filter: saturate(0);
 }

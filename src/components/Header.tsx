@@ -35,10 +35,10 @@ const Header: FunctionComponent<{
       </ul>
       <ul className="usercontrols header-usercontrols">
         <li className="usercontrols-item usercontrols-source">
-          <a href="https://github.com/habrasanta" title="Исходный код"></a>
+          <a target="_blank" href="https://github.com/habrasanta" title="Исходный код"></a>
         </li>
         <li className="usercontrols-item usercontrols-help">
-          <a href="https://ru.wikipedia.org/wiki/Тайный_Санта" title="Помощь"></a>
+          <a target="_blank" href="https://ru.wikipedia.org/wiki/Тайный_Санта" title="Помощь"></a>
         </li>
         <li className="usercontrols-item usercontrols-logout">
           <a href={"/backend/logout?next=%2F" + props.year + "%2F"} title="Выйти"></a>

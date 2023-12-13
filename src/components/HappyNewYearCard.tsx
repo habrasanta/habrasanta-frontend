@@ -7,7 +7,7 @@ const HappyNewYearCard: FunctionComponent<{
     <h3>С Новым Годом!</h3>
     {props.galleryUrl && (
       <p>
-        <a href={props.galleryUrl}>Пост хвастовства подарками</a>
+        Расскажите всем о своём подарке в <a target="_blank" href={props.galleryUrl}>посте хвастовства</a>
       </p>
     )}
   </div>

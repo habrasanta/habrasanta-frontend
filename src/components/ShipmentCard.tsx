@@ -24,7 +24,7 @@ const ShipmentCard: FunctionComponent<{
       <input
         id="fullname"
         type="text"
-        readonly
+        disabled
         value={props.fullName}
       />
       <PostageStamp year={props.year} />
@@ -32,12 +32,12 @@ const ShipmentCard: FunctionComponent<{
       <input
         id="postcode"
         type="text"
-        readonly
+        disabled
         value={props.postcode}
       />
       <textarea
         id="address"
-        readonly
+        disabled
         value={props.address}
       />
       <select
@@ -47,7 +47,7 @@ const ShipmentCard: FunctionComponent<{
       >
         <option disabled value="select">Не указана</option>
         {props.countries.map(country => (
-          <option key={country.code} value={country.code}>
+          <option key={country.code} value={country.code} selected={country.code === props.country}>
             {country.name}
           </option>
         ))}

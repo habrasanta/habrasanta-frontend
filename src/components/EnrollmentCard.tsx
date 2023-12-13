@@ -1,6 +1,6 @@
 import { h, FunctionComponent } from "preact";
 import clsx from "clsx";
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useMemo, useState } from "preact/hooks";
 
 import { AddressForm, AddressFormError, Country, Participation } from "../models";
 
@@ -25,9 +25,8 @@ const EnrollmentCard: FunctionComponent<{
     fullname: "",
     postcode: "",
     address: "",
-    country: "select",
+    country: "",
   });
-  console.log(props.participation);
 
   useEffect(() => {
     if (props.participation) {
@@ -35,7 +34,7 @@ const EnrollmentCard: FunctionComponent<{
         fullname: props.participation.fullname,
         postcode: props.participation.postcode,
         address: props.participation.address,
-        country: props.participation.country || "select",
+        country: props.participation.country || '',
       });
     }
   }, [props.participation]);
@@ -47,6 +46,10 @@ const EnrollmentCard: FunctionComponent<{
       [input.id]: input.value,
     }));
   };
+
+  const formDisabled = useMemo(() => {
+    return !!Object.values(addressForm).some(v => !v);
+  }, [addressForm]);
 
   return (
     <div className={clsx("card-front", "card-address", { "card-decorated": props.participation })}>
@@ -60,19 +63,19 @@ const EnrollmentCard: FunctionComponent<{
           value={addressForm.fullname}
           onInput={onAddressForm}
           placeholder="Полное имя"
-          readonly={!!props.participation}
+          disabled={!!props.participation}
         />
         <PostageStamp year={props.year} />
         <label for="postcode">Куда</label>
         <input
           id="postcode"
           className={clsx({ "error": props.addressFormError.postcode })}
-          type="text"
+          type="number"
           name="postCode"
           value={addressForm.postcode}
           onInput={onAddressForm}
           placeholder="Индекс"
-          readonly={!!props.participation}
+          disabled={!!props.participation}
         />
         <textarea
           id="address"
@@ -81,7 +84,7 @@ const EnrollmentCard: FunctionComponent<{
           value={addressForm.address}
           onInput={onAddressForm}
           placeholder="Адрес"
-          readonly={!!props.participation}
+          disabled={!!props.participation}
         />
         <select
           id="country"
@@ -89,7 +92,7 @@ const EnrollmentCard: FunctionComponent<{
           onChange={onAddressForm}
           disabled={!!props.participation}
         >
-          <option disabled value="select">Страна</option>
+          <option disabled value=''>Страна</option>
           {props.countries.map(country => (
             <option key={country.code} value={country.code}>
               {country.name}
@@ -102,7 +105,7 @@ const EnrollmentCard: FunctionComponent<{
           Я передумал участвовать
         </Button>
       ) : props.isParticipatable ? props.canParticipate ? (
-        <Button className="card-button" primary onClick={() => props.onEnroll(addressForm)}>
+        <Button disabled={formDisabled} className="card-button" primary onClick={() => props.onEnroll(addressForm)}>
           Зарегистрировать участника
         </Button>
       ) : (

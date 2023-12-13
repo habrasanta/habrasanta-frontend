@@ -43,8 +43,10 @@ const Chat: FunctionComponent<{
       ) : (
         <form onSubmit={(e: Event) => {
           e.preventDefault();
-          props.onSubmit(text);
-          setText("");
+          if (text.length > 0) {
+            props.onSubmit(text);
+            setText("");
+          }
         }}
           className="chat-form"
         >
