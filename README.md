@@ -23,4 +23,4 @@ Simply push to `dev`, GitHub will do the rest.
 
 ## Deploying to habra-adm.ru
 
-Simply push to `main`, GitHub will do the rest.
+Merge `dev` to `main`, GitHub will do the rest.
