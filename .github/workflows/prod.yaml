@@ -1,10 +1,10 @@
-name: Build the dev branch and deploy it to beta.habrasanta.org
+name: Build the main branch and deploy it to habra-adm.ru
 on:
   workflow_run:
     workflows:
       - Test each and every commit
     branches:
-      - dev
+      - main
     types:
       - completed
 concurrency:
@@ -27,4 +27,4 @@ jobs:
           echo "${{vars.SSH_KNOWN_HOSTS}}" > ~/.ssh/known_hosts
           eval `ssh-agent`
           echo "${{secrets.SSH_PRIVATE_KEY}}" | ssh-add -
-          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/beta.habrasanta.org
+          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/habra-adm.ru

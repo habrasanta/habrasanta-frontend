@@ -19,4 +19,8 @@ $ NODE_ENV=production npm run build
 
 ## Deploying to beta.habrasanta.org
 
+Simply push to `dev`, GitHub will do the rest.
+
+## Deploying to habra-adm.ru
+
 Simply push to `main`, GitHub will do the rest.
