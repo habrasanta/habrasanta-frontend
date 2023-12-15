@@ -70,7 +70,7 @@ const EnrollmentCard: FunctionComponent<{
         <input
           id="postcode"
           className={clsx({ "error": props.addressFormError.postcode })}
-          type="number"
+          type="text"
           name="postCode"
           value={addressForm.postcode}
           onInput={onAddressForm}
