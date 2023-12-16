@@ -1,19 +1,18 @@
-name: Build the dev branch and deploy it to beta.habrasanta.org
+name: Build the pull request and deploy it on habrasanta.org
 on:
-  workflow_run:
-    workflows:
-      - Test each and every commit
-    branches:
-      - dev
-    types:
-      - completed
+  pull_request:
+permissions:
+  contents: read
+  deployments: write
 concurrency:
-  group: deploy
-  cancel-in-progress: false
+  group: pull-request-${{ github.event.number }}-deployment
+  cancel-in-progress: true
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment:
+      name: pull-request-${{ github.event.number }}
+      url: https://pull-request-${{ github.event.number }}.habrasanta.org
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -27,4 +26,6 @@ jobs:
           echo "${{vars.SSH_KNOWN_HOSTS}}" > ~/.ssh/known_hosts
           eval `ssh-agent`
           echo "${{secrets.SSH_PRIVATE_KEY}}" | ssh-add -
-          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/beta.habrasanta.org
+          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/pull-request-${{ github.event.number }}.habrasanta.org
+      - name: Check if the URL is accessible
+        run: curl --fail https://pull-request-${{ github.event.number }}.habrasanta.org
