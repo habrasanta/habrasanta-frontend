@@ -1,19 +1,20 @@
 name: Build the main branch and deploy it to habra-adm.ru
 on:
-  workflow_run:
-    workflows:
-      - Test each and every commit
+  push:
     branches:
       - main
-    types:
-      - completed
+permissions:
+  contents: read
+  deployments: write
 concurrency:
-  group: deploy
+  group: deployment
   cancel-in-progress: false
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment:
+      name: habra-adm.ru
+      url: https://habra-adm.ru
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -21,10 +22,14 @@ jobs:
       - run: npm run build
         env:
           NODE_ENV: production
-      - name: Deploy!
+      - name: Deploy to habra-adm.ru
         run: |
           mkdir ~/.ssh
-          echo "${{vars.SSH_KNOWN_HOSTS}}" > ~/.ssh/known_hosts
+          echo "${{ vars.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           eval `ssh-agent`
-          echo "${{secrets.SSH_PRIVATE_KEY}}" | ssh-add -
+          echo "$SSH_PRIVATE_KEY" | ssh-add -
           rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/habra-adm.ru
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Check if the URL is accessible
+        run: curl --fail https://habra-adm.ru
