@@ -17,10 +17,12 @@ By default, the beta backend (https://beta.habrasanta.org) is used.
 $ NODE_ENV=production npm run build
 ```
 
-## Deploying to beta.habrasanta.org
+## Deployment
 
-Simply push to `dev`, GitHub will do the rest.
+Deployment is completely automated thanks to GitHub Actions.
 
-## Deploying to habra-adm.ru
+When a pull request is open, a new website is automatically created at `pull-request-#num.habrasanta.org` are your changes are deployed there.
 
-Merge `dev` to `main`, GitHub will do the rest.
+Once the pull request is merged to `main`, it is automatically deployed on https://habra-adm.ru and starts making the users happy.
+
+See also the latest deployments in the sidebar on the right 👉
