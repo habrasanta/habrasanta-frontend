@@ -11,7 +11,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment:
-      name: pull-request-${{ github.event.number }}
+      name: ${{ env.DOMAIN }}
       url: https://${{ env.DOMAIN }}
     env:
       DOMAIN: pull-request-${{ github.event.number }}.habrasanta.org
