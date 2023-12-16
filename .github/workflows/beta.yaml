@@ -25,9 +25,11 @@ jobs:
       - name: Deploy to ${{ env.DOMAIN }}
         run: |
           mkdir ~/.ssh
-          echo "${{vars.SSH_KNOWN_HOSTS}}" > ~/.ssh/known_hosts
+          echo "${{ vars.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           eval `ssh-agent`
-          echo "${{secrets.SSH_PRIVATE_KEY}}" | ssh-add -
+          echo "$SSH_PRIVATE_KEY" | ssh-add -
           rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/${{ env.DOMAIN }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Check if the URL is accessible
         run: curl --fail https://${{ env.DOMAIN }}
