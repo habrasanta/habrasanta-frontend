@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pull-request-${{ github.event.number }}
-      url: https://pull-request-${{ github.event.number }}.habrasanta.org
+      url: https://${{ env.DOMAIN }}
+    env:
+      DOMAIN: pull-request-${{ github.event.number }}.habrasanta.org
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -20,12 +22,12 @@ jobs:
       - run: npm run build
         env:
           NODE_ENV: production
-      - name: Deploy!
+      - name: Deploy to ${{ env.DOMAIN }}
         run: |
           mkdir ~/.ssh
           echo "${{vars.SSH_KNOWN_HOSTS}}" > ~/.ssh/known_hosts
           eval `ssh-agent`
           echo "${{secrets.SSH_PRIVATE_KEY}}" | ssh-add -
-          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/pull-request-${{ github.event.number }}.habrasanta.org
+          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/${{ env.DOMAIN }}
       - name: Check if the URL is accessible
-        run: curl --fail https://pull-request-${{ github.event.number }}.habrasanta.org
+        run: curl --fail https://${{ env.DOMAIN }}
