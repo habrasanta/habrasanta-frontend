@@ -110,7 +110,7 @@ const EnrollmentCard: FunctionComponent<{
         </Button>
       ) : (
         <div className="card-closed card-banned">
-          Нужен <a href="https://habr.com/ru/docs/help/registration/#standard" target="_blank">полноправный аккаунт</a> с кармой от +10
+          Нужен <a href="https://habr.com/ru/docs/help/registration/#standard" target="_blank">полноправный аккаунт</a> с кармой от +7
         </div>
       ) : (
         <div className="card-closed">
