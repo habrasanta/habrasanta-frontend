@@ -11,7 +11,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment:
-      name: ${{ env.DOMAIN }}
+      # Looks like ${{ env.DOMAIN }} is not allowed in "name"
+      name: pull-request-${{ github.event.number }}.habrasanta.org
       url: https://${{ env.DOMAIN }}
     env:
       DOMAIN: pull-request-${{ github.event.number }}.habrasanta.org
