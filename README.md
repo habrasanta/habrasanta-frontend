@@ -21,8 +21,8 @@ $ NODE_ENV=production npm run build
 
 Deployment is completely automated thanks to GitHub Actions.
 
-When a pull request is open, a new website is automatically created at `pull-request-#num.habrasanta.org` are your changes are deployed there.
+When a pull request is open, a new website is automatically created at `pull-request-#num.habrasanta.org` and your changes are deployed there.
 
-Once the pull request is merged to `main`, it is automatically deployed on https://habra-adm.ru and starts making the users happy.
+Once the pull request is merged into `main`, it is automatically deployed on https://habra-adm.ru and starts making our users happy.
 
 See also the latest deployments in the sidebar on the right 👉
