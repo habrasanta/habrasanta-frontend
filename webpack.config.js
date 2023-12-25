@@ -1,4 +1,5 @@
 const CompressionPlugin = require("compression-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const mime = require("mime-types");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -111,6 +112,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "public" },
+      ],
     }),
     new CompressionPlugin(),
   ],
