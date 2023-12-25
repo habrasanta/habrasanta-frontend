@@ -21,7 +21,13 @@ const Landing: FunctionComponent<{
     fetch("/api/v1/seasons/" + props.year)
       .then(res => res.ok ? res.json() : Promise.reject(res))
       .then((data: Season) => setSeason(data))
-      .catch(res => res.json().then(err => alert(err.detail)));
+      .catch(res => {
+        if (res.status === 404) {
+          window.location.href = "/not-found";
+        } else {
+          res.json().then(err => alert(err.detail));
+        }
+      });
   }, []);
 
   if (user.is_authenticated) {
