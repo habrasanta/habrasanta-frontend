@@ -53,7 +53,14 @@ const Profile: FunctionComponent<{
   useEffect(() => {
     fetch("/api/v1/seasons/" + props.year)
       .then(res => res.ok ? res.json() : Promise.reject(res))
-      .then(data => setSeason(data));
+      .then(data => setSeason(data))
+      .catch(res => {
+        if (res.status === 404) {
+          window.location.href = "/not-found";
+        } else {
+          res.json().then(err => alert(err.detail));
+        }
+      });
     fetch("/api/v1/seasons/" + props.year + "/participation")
       .then(res => res.ok ? res.json() : Promise.reject(res))
       .then(data => setParticipation(data))
