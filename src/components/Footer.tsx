@@ -8,7 +8,8 @@ const Footer: FunctionComponent = () => (
       Валя Новоселов<br/>дизайнер
     </a>
     <div className="footer-feedback">
-      В любой непонятной ситуации<br/>пишите <a href="mailto:support@habra-adm.ru">support@habra-adm.ru</a>
+      В любой непонятной ситуации пишите<br/>
+      <a href="https://habr.com/ru/users/Boomburum/">Boomburum</a> (на Хабре или в Telegram)
     </div>
   </footer>
 );
