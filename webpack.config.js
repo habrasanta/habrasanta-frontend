@@ -99,7 +99,7 @@ module.exports = {
     port: 9000,
     proxy: [
       {
-        context: ["/api", "/backend", "/static"],
+        context: ["/api", "/backend"],
         target: "https://beta.habrasanta.org",
         changeOrigin: true,
         secure: false,
