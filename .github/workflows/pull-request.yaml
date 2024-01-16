@@ -13,7 +13,7 @@ jobs:
     needs:
       - lint
       - build
-    uses: ./.github/workflows/build.yaml
+    uses: ./.github/workflows/deploy.yaml
     with:
       domain: pull-request-${{ github.event.number }}.habrasanta.org
       environment: pull-request-${{ github.event.number }}

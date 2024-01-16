@@ -15,7 +15,7 @@ jobs:
     needs:
       - lint
       - build
-    uses: ./.github/workflows/build.yaml
+    uses: ./.github/workflows/deploy.yaml
     with:
       domain: beta.habrasanta.org
       environment: staging
@@ -24,7 +24,7 @@ jobs:
   deploy_production:
     needs:
       - deploy_staging
-    uses: ./.github/workflows/build.yaml
+    uses: ./.github/workflows/deploy.yaml
     with:
       domain: habra-adm.ru
       environment: production
