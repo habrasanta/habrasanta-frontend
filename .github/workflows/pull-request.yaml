@@ -1,4 +1,4 @@
-name: Build the pull request and deploy it on habrasanta.org
+name: Deploy to pull-request-*.habrasanta.org
 on:
   pull_request:
 permissions:
