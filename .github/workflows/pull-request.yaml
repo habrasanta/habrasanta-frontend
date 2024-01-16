@@ -8,7 +8,11 @@ concurrency:
   group: pull-request-${{ github.event.number }}-deployment
   cancel-in-progress: true
 jobs:
+  lint:
+    uses: ./.github/workflows/lint.yaml
   build-and-deploy:
+    needs:
+      - lint
     runs-on: ubuntu-latest
     environment:
       # Looks like ${{ env.DOMAIN }} is not allowed in "name"

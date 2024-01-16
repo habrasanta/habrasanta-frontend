@@ -10,7 +10,11 @@ concurrency:
   group: deployment
   cancel-in-progress: false
 jobs:
+  lint:
+    uses: ./.github/workflows/lint.yaml
   build-and-deploy:
+    needs:
+      - lint
     runs-on: ubuntu-latest
     environment:
       name: habra-adm.ru
