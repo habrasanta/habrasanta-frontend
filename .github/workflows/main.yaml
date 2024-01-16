@@ -5,7 +5,7 @@ on:
       - main
 concurrency:
   group: deployment
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   lint:
     name: Lint
