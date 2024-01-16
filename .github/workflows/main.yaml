@@ -11,10 +11,19 @@ jobs:
     uses: ./.github/workflows/lint.yaml
   build:
     uses: ./.github/workflows/build.yaml
-  deploy_production:
+  deploy_staging:
     needs:
       - lint
       - build
+    uses: ./.github/workflows/build.yaml
+    with:
+      domain: beta.habrasanta.org
+      environment: beta.habrasanta.org
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  deploy_production:
+    needs:
+      - deploy_staging
     uses: ./.github/workflows/build.yaml
     with:
       domain: habra-adm.ru
