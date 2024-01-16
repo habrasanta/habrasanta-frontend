@@ -1,7 +1,8 @@
 name: Delete the pull-request-*.habrasanta.org website
 on:
   pull_request:
-    - closed
+    types:
+      - closed
 jobs:
   cleanup:
     runs-on: ubuntu-latest
