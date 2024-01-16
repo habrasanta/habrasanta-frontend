@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - main
-permissions:
-  contents: read
-  deployments: write
 concurrency:
   group: deployment
   cancel-in-progress: false
@@ -14,26 +11,13 @@ jobs:
     uses: ./.github/workflows/lint.yaml
   build:
     uses: ./.github/workflows/build.yaml
-  deploy:
+  deploy_production:
     needs:
       - lint
       - build
-    runs-on: ubuntu-latest
-    environment:
-      name: habra-adm.ru
-      url: https://habra-adm.ru
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: dist
-      - name: Deploy to habra-adm.ru
-        run: |
-          mkdir ~/.ssh
-          echo "${{ vars.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-          eval `ssh-agent`
-          echo "$SSH_PRIVATE_KEY" | ssh-add -
-          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/habra-adm.ru
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Check if the URL is accessible
-        run: curl --fail https://habra-adm.ru
+    uses: ./.github/workflows/build.yaml
+    with:
+      domain: habra-adm.ru
+      environment: habra-adm.ru
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
