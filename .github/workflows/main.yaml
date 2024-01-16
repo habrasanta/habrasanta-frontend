@@ -1,4 +1,4 @@
-name: Build the main branch and deploy it to habra-adm.ru
+name: Deploy to habra-adm.ru
 on:
   push:
     branches:
