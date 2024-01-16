@@ -24,6 +24,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: dist
+          path: dist
       - run: |
           mkdir ~/.ssh
           echo "${{ vars.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
