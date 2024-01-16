@@ -16,6 +16,6 @@ jobs:
     uses: ./.github/workflows/build.yaml
     with:
       domain: pull-request-${{ github.event.number }}.habrasanta.org
-      environment: pull-request-${{ github.event.number }}.habrasanta.org
+      environment: pull-request-${{ github.event.number }}
     secrets:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}

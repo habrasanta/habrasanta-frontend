@@ -18,7 +18,7 @@ jobs:
     uses: ./.github/workflows/build.yaml
     with:
       domain: beta.habrasanta.org
-      environment: beta.habrasanta.org
+      environment: staging
     secrets:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   deploy_production:
@@ -27,6 +27,6 @@ jobs:
     uses: ./.github/workflows/build.yaml
     with:
       domain: habra-adm.ru
-      environment: habra-adm.ru
+      environment: production
     secrets:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
