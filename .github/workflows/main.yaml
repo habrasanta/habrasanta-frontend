@@ -12,20 +12,20 @@ concurrency:
 jobs:
   lint:
     uses: ./.github/workflows/lint.yaml
-  build-and-deploy:
+  build:
+    uses: ./.github/workflows/build.yaml
+  deploy:
     needs:
       - lint
+      - build
     runs-on: ubuntu-latest
     environment:
       name: habra-adm.ru
       url: https://habra-adm.ru
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm ci
-      - run: npm run build
-        env:
-          NODE_ENV: production
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
       - name: Deploy to habra-adm.ru
         run: |
           mkdir ~/.ssh

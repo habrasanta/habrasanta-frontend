@@ -10,9 +10,12 @@ concurrency:
 jobs:
   lint:
     uses: ./.github/workflows/lint.yaml
+  build:
+    uses: ./.github/workflows/build.yaml
   build-and-deploy:
     needs:
       - lint
+      - build
     runs-on: ubuntu-latest
     environment:
       # Looks like ${{ env.DOMAIN }} is not allowed in "name"
@@ -21,12 +24,9 @@ jobs:
     env:
       DOMAIN: pull-request-${{ github.event.number }}.habrasanta.org
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm ci
-      - run: npm run build
-        env:
-          NODE_ENV: production
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
       - name: Deploy to ${{ env.DOMAIN }}
         run: |
           mkdir ~/.ssh
