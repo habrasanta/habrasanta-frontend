@@ -8,10 +8,13 @@ concurrency:
   cancel-in-progress: false
 jobs:
   lint:
+    name: Lint
     uses: ./.github/workflows/lint.yaml
   build:
+    name: Build
     uses: ./.github/workflows/build.yaml
   deploy_staging:
+    name: Staging
     needs:
       - lint
       - build
@@ -22,6 +25,7 @@ jobs:
     secrets:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   deploy_production:
+    name: Production
     needs:
       - deploy_staging
     uses: ./.github/workflows/deploy.yaml

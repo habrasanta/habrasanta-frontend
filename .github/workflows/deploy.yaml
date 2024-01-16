@@ -16,6 +16,7 @@ permissions:
   deployments: write
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     environment:
       name: ${{ inputs.environment }}
@@ -34,6 +35,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   smoke_test:
+    name: Smoke test
     needs:
       - deploy
     runs-on: ubuntu-latest
