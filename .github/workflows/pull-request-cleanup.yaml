@@ -1,0 +1,22 @@
+name: Delete the pull-request-*.habrasanta.org website
+on:
+  pull_request:
+    - closed
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete the environment on GitHub
+        uses: strumwolf/delete-deployment-environment@v2.2.3
+        with:
+          token: ${{ secrets.DEPLOYMENTS_PAT }}
+          environment: pull-request-${{ github.event.number }}.habrasanta.org
+      - name: Delete files on the server
+        run: |
+          mkdir ~/.ssh
+          echo "${{ vars.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          eval `ssh-agent`
+          echo "$SSH_PRIVATE_KEY" | ssh-add -
+          ssh github@rocket.habrasanta.org rm -rf /var/www/pull-request-${{ github.event.number }}.habrasanta.org
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
