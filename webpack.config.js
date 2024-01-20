@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const CompressionPlugin = require("compression-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -100,7 +102,7 @@ module.exports = {
     proxy: [
       {
         context: ["/api", "/backend"],
-        target: "https://beta.habrasanta.org",
+        target: process.env.BACKEND_BASE_URL || "https://beta.habrasanta.org",
         changeOrigin: true,
         secure: false,
       },
