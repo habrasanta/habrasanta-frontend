@@ -116,7 +116,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
       templateParameters: {
-        version: execSync("git describe --tags --always").toString(),
+        version: execSync("git describe --tags --always").toString().trim(),
       },
     }),
     new CopyPlugin({
