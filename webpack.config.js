@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const mime = require("mime-types");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+const { execSync } = require("child_process");
+const webpack = require('webpack');
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -109,6 +111,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __VERSION__: execSync("git describe --tags --always").toString(),
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
