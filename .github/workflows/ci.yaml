@@ -1,0 +1,64 @@
+name: CI
+on:
+  push:
+    paths-ignore:
+      - '**/README.md'
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Make sure there are no type checking errors
+        run: npx tsc --noEmit
+      - run: npm run build
+        env:
+          NODE_ENV: production
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: ./dist
+  deploy_staging:
+    name: Staging
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+      - run: |
+          mkdir ~/.ssh
+          echo "${{ vars.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          eval `ssh-agent`
+          echo "$SSH_PRIVATE_KEY" | ssh-add -
+          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/beta.habrasanta.org
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Smoke test
+        run: curl --fail https://beta.habrasanta.org
+  deploy_production:
+    name: Production
+    needs: deploy_staging
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+      - run: |
+          mkdir ~/.ssh
+          echo "${{ vars.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          eval `ssh-agent`
+          echo "$SSH_PRIVATE_KEY" | ssh-add -
+          rsync --recursive --verbose dist/ github@rocket.habrasanta.org:/var/www/habra-adm.ru
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Smoke test
+        run: curl --fail https://habra-adm.ru
