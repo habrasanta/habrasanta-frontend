@@ -42,6 +42,15 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Smoke test
         run: curl --fail https://beta.habrasanta.org
+      - run: |
+          wget https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x mc
+          ./mc alias set habra-adm https://hel1.your-objectstorage.com "$ACCESSKEY" "$SECRETKEY"
+          ./mc cp -r dist/ habra-adm/habra-adm
+          rm ~/.mc/config.json
+        env:
+          ACCESSKEY: ${{ secrets.S3_ACCESSKEY }}
+          SECRETKEY: ${{ secrets.S3_SECRETKEY }}
   deploy_production:
     name: Production
     needs: deploy_staging
