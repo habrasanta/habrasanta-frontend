@@ -214,7 +214,7 @@
 }
 
 .card-flipper {
-  background: transparent url(../images/chat.png);
+  background: #bfbec0 url(../images/chat.png);
   border: none;
   cursor: pointer;
   float: right;
