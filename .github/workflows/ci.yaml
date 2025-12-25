@@ -28,6 +28,7 @@ jobs:
           chmod +x mc
           ./mc alias set habra-adm https://hel1.your-objectstorage.com "$ACCESSKEY" "$SECRETKEY"
           ./mc cp -r dist/ habra-adm/habra-adm
+          ./mc cors set habra-adm/habra-adm cors.xml
           rm ~/.mc/config.json
         env:
           ACCESSKEY: ${{ secrets.S3_ACCESSKEY }}
