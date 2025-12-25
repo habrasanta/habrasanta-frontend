@@ -3,6 +3,7 @@ require("dotenv").config();
 const CompressionPlugin = require("compression-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { SubresourceIntegrityPlugin } = require("webpack-subresource-integrity");
 const mime = require("mime-types");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
@@ -14,10 +15,11 @@ module.exports = {
   mode: isProd ? "production" : "development",
   entry: "./src/index.tsx",
   output: {
-    publicPath: "/",
+    publicPath: isProd ? "https://hel1.your-objectstorage.com/habra-adm/" : "/",
     filename: "[name].[contenthash].js",
     assetModuleFilename: "[name].[contenthash][ext][query]",
     clean: true,
+    crossOriginLoading: "anonymous",
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -112,6 +114,9 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
+    }),
+    new SubresourceIntegrityPlugin({
+      hashFuncNames: ["sha256"],
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html"),
